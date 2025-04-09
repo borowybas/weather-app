@@ -66,3 +66,53 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.weather-card {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  border-radius: 22px;
+  background-color: #1a1a1a;
+  color: #fff;
+  width: 300px; */
+  background: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.weather-card.main {
+  background: #1282e4;
+  font-size: 1.2rem;
+  font-weight: bold;
+  /* width: 200%; */
+}
+
+.main-city {
+  margin-bottom: 2rem;
+  width: 50%;
+}
+.other-cities{
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem; */
+  /* display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: dodgerblue;
+  padding: 10px; */
+}
+.weather-grid {
+  /* width: 100%; */
+  /* Ensure it takes the full width of the parent */
+  display: grid; /* Ensure it behaves as a grid container */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 1rem; /* Add spacing between grid items */
+
+}
+#root {
+  width: 100%;
+  max-width: 1200px; 
+  margin: 0 auto;
+}
