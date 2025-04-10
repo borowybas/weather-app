@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { fetchWeatherByCity } from "../api/weather";
 
 const MainWeatherCard = () => {
@@ -6,7 +6,7 @@ const MainWeatherCard = () => {
 
     useEffect(() => {
         // fetchWeatherByCity('New York').then(setWeatherData);
-        fetchWeatherByCity('New York').then(setWeatherData);
+        // fetchWeatherByCity('New Y').then(setWeatherData);
 
     }, []);
 
@@ -33,3 +33,18 @@ const MainWeatherCard = () => {
 };
 
 export default MainWeatherCard;
+
+// interface MainWeatherCardProps {
+//     weatherData: any; // Replace 'any' with the appropriate type for weatherData
+// }
+
+// const MainWeatherCard: React.FC<MainWeatherCardProps> = ({ weatherData }) => {
+//     return (
+//         <div>
+//             {/* Main weather card content */}
+//             <p>{JSON.stringify(weatherData)}</p> {/* Example usage */}
+//         </div>
+//     );
+// };
+
+// export default MainWeatherCard;

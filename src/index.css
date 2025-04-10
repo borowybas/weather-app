@@ -28,6 +28,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #6b86a8;
 }
 
 h1 {
@@ -115,4 +116,70 @@ button:focus-visible {
   width: 100%;
   max-width: 1200px; 
   margin: 0 auto;
+}
+
+.location-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+
+.location-selector-input-container{
+  background-color: white;
+  width: 50%;
+  border-radius: 10px;
+  height: 2.5rem;
+  padding: 0 15px;
+  box-shadow: 0px opx 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.location-selector-input{
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  font-size: 1.25rem;
+  width: 100%;
+  margin-left: 5px;;
+  
+}
+.location-selector-input:focus{
+  outline: none;
+}
+#location-selector-icon {
+  color: #126cbb;
+}
+
+.location-selector-results{
+  /* width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-top: 1rem;
+  max-height: 200px;
+  overflow-y: scroll; */
+  position: absolute; /* Position it relative to the container */
+  top: 100%; /* Place it directly below the input element */
+  left: 0; /* Align it to the left edge of the container */
+  z-index: 10; /* Ensure it appears above other elements */
+  width: 100%; /* Match the width of the input container */
+  background-color: white; /* Keep the dropdown visible */
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1); /* Add a shadow for better visibility */
+  border-radius: 10px; /* Optional: Rounded corners */
+  max-height: 200px; /* Limit the height for scrollable content */
+  overflow-y: auto; /* Enable scrolling if content exceeds max height */
+}
+.location-selector-results div:hover{
+  background-color: #e0e0e0;
+  cursor: pointer;
+
+}
+ul {
+  list-style: none;
 }
