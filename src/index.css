@@ -68,6 +68,12 @@ button:focus-visible {
   }
 }
 
+#root {
+  width: 100%;
+  /* max-width: 1200px;  */
+  margin: 0 auto;
+}
+
 .weather-card {
   /* display: flex;
   flex-direction: column;
@@ -96,7 +102,7 @@ button:focus-visible {
 
 .main-city {
   margin-bottom: 2rem;
-  width: 50%;
+  /* width: 50%; */
 }
 .other-cities{
   /* display: grid;
@@ -106,6 +112,7 @@ button:focus-visible {
   grid-template-columns: auto auto auto;
   background-color: dodgerblue;
   padding: 10px; */
+  /* max-width: 25%; */
 }
 .weather-grid {
   /* width: 100%; */
@@ -114,11 +121,6 @@ button:focus-visible {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
   gap: 1rem; /* Add spacing between grid items */
 
-}
-#root {
-  width: 100%;
-  max-width: 1200px; 
-  margin: 0 auto;
 }
 
 .location-selector {
@@ -158,25 +160,16 @@ button:focus-visible {
 }
 
 .location-selector-results{
-  /* width: 100%;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  margin-top: 1rem;
-  max-height: 200px;
-  overflow-y: scroll; */
   position: absolute; /* Position it relative to the container */
   top: 100%; /* Place it directly below the input element */
-  left: 0; /* Align it to the left edge of the container */
+  left: 0; 
   z-index: 10; /* Ensure it appears above other elements */
-  width: 100%; /* Match the width of the input container */
+  width: 100%; 
   background-color: white; /* Keep the dropdown visible */
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1); /* Add a shadow for better visibility */
-  border-radius: 10px; /* Optional: Rounded corners */
-  max-height: 200px; /* Limit the height for scrollable content */
-  overflow-y: auto; /* Enable scrolling if content exceeds max height */
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1); 
+  border-radius: 10px; 
+  max-height: 200px; 
+  overflow-y: auto; /* Scrolling */
 }
 .location-selector-results div:hover{
   background-color: #e0e0e0;
@@ -190,13 +183,14 @@ ul {
 .filter-panel-container {
   position: absolute;
   right: 0;
-  top: 0;
+  top: 10%;
   width: 250px;
   padding: 1rem;
   background-color: #f9f9f9;
   border-left: 1px solid #ddd;
-  height: 100%;
+  height: 80%;
   overflow-y: auto;
+  border-radius: 22px;
 }
 
 .filter-panel h3 {
