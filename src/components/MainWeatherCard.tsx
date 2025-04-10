@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { fetchWeatherByCity } from "../api/weather";
 
-const MainWeatherCard = () => {
+const MainWeatherCard = ({mainCity}: {mainCity: any}) => {
+    if (!mainCity) return <p>Nie ustawiono głównego miasta...</p>;
     const [weatherData, setWeatherData] = useState<any>(null);
 
-    useEffect(() => {
-        // fetchWeatherByCity('New York').then(setWeatherData);
-        // fetchWeatherByCity('New Y').then(setWeatherData);
+    // useEffect(() => {
+    //     // fetchWeatherByCity('New York').then(setWeatherData);
+    //     // fetchWeatherByCity('New Y').then(setWeatherData);
 
-    }, []);
+    // }, []);
 
-    if (!weatherData) return <p>Ładowanie danych pogodowych...</p>;
+    // if (!weatherData) return <p>Ładowanie danych pogodowych...</p>;
 
     return (
         // <div className="weather-card main">
@@ -23,11 +24,10 @@ const MainWeatherCard = () => {
         //     <button className="weather-card-button">Refresh</button>
         // </div>
         <div className="weather-card main">
-            <h2>{weatherData.name}</h2>
-            <p>{weatherData.main.temp}</p>
-            <p>Wiatr: {weatherData.wind.speed} m/s</p>
-            <p>Opis: {weatherData.weather[0].description}</p>
-            {/* inne dane wg ustawień */}
+            <h2>{mainCity.location.name}</h2>
+            <p>{mainCity.current.temp_c}°C</p>
+            <p>Wiatr: {mainCity.current.wind_kph} km/s</p>
+            <p>Opis: {mainCity.current.condition.text}</p>
         </div>
     );
 };

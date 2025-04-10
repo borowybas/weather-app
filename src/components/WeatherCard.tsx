@@ -5,18 +5,25 @@ type WeatherCardProps = {
     // description: string;
     condition: string;
     icon: string;
+    isMainCity?: boolean;
+    onSetMainCity?: () => void;
 };
 
-const WeatherCard = ({city, temperature, condition, icon}: WeatherCardProps) => {
+const WeatherCard = ({city, temperature, condition, icon, isMainCity, onSetMainCity}: WeatherCardProps) => {
     return (
-        <div className="weather-card">
+        <div className={`weather-card ${isMainCity ? "main" : ""}`}>
             <h2 className="weather-card-title">{city}</h2>
             <div className="weather-card-content">
                 {/* <p>Location: {city}</p> */}
-                <p>Temperature: {temperature}℃</p>
+                <p>Temperature: {temperature}</p>
                 <p>Condition: {condition}</p>
                 <img src={icon.startsWith("//") ? `https:${icon}` : icon} alt={condition} />
             </div>
+            {!isMainCity && (
+                <button className="weather-card-button" onClick={onSetMainCity}>
+                    Set as Main City
+                </button>
+            )}
             {/* <button className="weather-card-button">Refresh</button> */}
         </div>
         // <div className="weather-card">

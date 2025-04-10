@@ -1,7 +1,7 @@
 import React from "react";
 import WeatherCard from "./WeatherCard";
 
-const WeatherGrid = ({ selectedCities }: { selectedCities: any[] }) => {
+const WeatherGrid = ({ selectedCities, setMainCity, mainCity }: { selectedCities: any[], setMainCity: (city: any) => void, mainCity: any }) => {
     return (
         <div className="weather-grid">
             {selectedCities.map((city, index) => (
@@ -11,6 +11,8 @@ const WeatherGrid = ({ selectedCities }: { selectedCities: any[] }) => {
                     temperature={`${city.current.temp_c}°C`} 
                     condition={city.current.condition.text} 
                     icon={city.current.condition.icon} 
+                    isMainCity={mainCity?.location.name === city.location.name}
+                    onSetMainCity={() => setMainCity(city)} // Set main city when clicked
                 />
             ))}
         </div>
