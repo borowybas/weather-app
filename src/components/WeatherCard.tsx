@@ -1,23 +1,30 @@
-
 type WeatherCardProps = {
     city: string;
-    temperature: string;
-    // description: string;
-    condition: string;
-    icon: string;
+    weatherData: any;
+    selectedFilters: {[key: string]: boolean};
     isMainCity?: boolean;
     onSetMainCity?: () => void;
 };
 
-const WeatherCard = ({city, temperature, condition, icon, isMainCity, onSetMainCity}: WeatherCardProps) => {
+const WeatherCard = ({city, weatherData, selectedFilters, isMainCity, onSetMainCity}: WeatherCardProps) => {
     return (
         <div className={`weather-card ${isMainCity ? "main" : ""}`}>
             <h2 className="weather-card-title">{city}</h2>
             <div className="weather-card-content">
-                {/* <p>Location: {city}</p> */}
-                <p>Temperature: {temperature}</p>
-                <p>Condition: {condition}</p>
-                <img src={icon.startsWith("//") ? `https:${icon}` : icon} alt={condition} />
+                {selectedFilters.temp_c && <p>Temperature: {weatherData.current.temp_c}°C</p>}
+                {selectedFilters.temp_f && <p>Temperature: {weatherData.current.temp_f}°F</p>}
+                {selectedFilters.condition && <p>Condition: {weatherData.current.condition.text}</p>}
+                {selectedFilters.wind_kph && <p>Wind: {weatherData.current.wind_kph} km/h</p>}
+                {selectedFilters.wind_mph && <p>Wind: {weatherData.current.wind_mph} mph</p>}
+                {selectedFilters.humidity && <p>Humidity: {weatherData.current.humidity}%</p>}
+                {selectedFilters.precip_mm && <p>Precipitation: {weatherData.current.precip_mm} mm</p>}
+                {selectedFilters.cloud && <p>Cloudiness: {weatherData.current.cloud}%</p>}
+                {selectedFilters.pressure_mb && <p>Pressure: {weatherData.current.pressure_mb} mb</p>}
+                {selectedFilters.vis_km && <p>Visibility: {weatherData.current.vis_km} km</p>}
+                {selectedFilters.uv && <p>UV Index: {weatherData.current.uv}</p>}
+                {selectedFilters.feelslike_c && <p>Feels Like: {weatherData.current.feelslike_c}°C</p>}
+                {selectedFilters.feelslike_f && <p>Feels Like: {weatherData.current.feelslike_f}°F</p>}
+                <img src={weatherData.current.condition.icon.startsWith("//") ? `https:${weatherData.current.condition.icon}` : weatherData.current.condition.icon} alt={weatherData.current.condition.text} />
             </div>
             {!isMainCity && (
                 <button className="weather-card-button" onClick={onSetMainCity}>
@@ -26,10 +33,6 @@ const WeatherCard = ({city, temperature, condition, icon, isMainCity, onSetMainC
             )}
             {/* <button className="weather-card-button">Refresh</button> */}
         </div>
-        // <div className="weather-card">
-        //     <h3>{city}</h3>
-        //     <p>{temperature}</p>
-        // </div>
     );
 };
 

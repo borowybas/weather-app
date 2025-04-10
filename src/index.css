@@ -82,12 +82,15 @@ button:focus-visible {
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  /* max-width: 25%; */
 }
 
 .weather-card.main {
-  background: #1282e4;
+  background: #90aac0;
   font-size: 1.2rem;
   font-weight: bold;
+  max-width: 100%;
+
   /* width: 200%; */
 }
 
@@ -182,4 +185,25 @@ button:focus-visible {
 }
 ul {
   list-style: none;
+}
+
+.filter-panel-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 250px;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-left: 1px solid #ddd;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.filter-panel h3 {
+  margin-bottom: 1rem;
+}
+
+.filter-item {
+  display: block;
+  margin-bottom: 0.5rem;
 }

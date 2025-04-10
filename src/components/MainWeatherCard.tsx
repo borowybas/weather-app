@@ -33,18 +33,3 @@ const MainWeatherCard = ({mainCity}: {mainCity: any}) => {
 };
 
 export default MainWeatherCard;
-
-// interface MainWeatherCardProps {
-//     weatherData: any; // Replace 'any' with the appropriate type for weatherData
-// }
-
-// const MainWeatherCard: React.FC<MainWeatherCardProps> = ({ weatherData }) => {
-//     return (
-//         <div>
-//             {/* Main weather card content */}
-//             <p>{JSON.stringify(weatherData)}</p> {/* Example usage */}
-//         </div>
-//     );
-// };
-
-// export default MainWeatherCard;
