@@ -5,6 +5,7 @@ import WeatherGrid from "../components/WeatherGrid";
 import FilterSelector from "../components/FilterSelector";
 import '../styles/HomeScreen.scss';
 import Navbar from "../components/Navbar";
+import { fetchWeatherByCity } from "../api/weather";
 
 const HomeScreen = () => {
     const [selectedCities, setSelectedCities] = useState<any[]>([]);
@@ -26,19 +27,33 @@ const HomeScreen = () => {
     });
 
     useEffect(() => {
-        const savedCities = localStorage.getItem("selectedCities");
-        const savedFilters = localStorage.getItem("selectedFilters");
-        const savedMainCity = localStorage.getItem("mainCity");
+        const initializeDefaultCity = async () => {
 
-        if (savedCities) {
-            setSelectedCities(JSON.parse(savedCities));
-        }
-        if (savedFilters) {
-            setSelectedFilters(JSON.parse(savedFilters));
-        }
-        if (savedMainCity) {
-            setMainCity(JSON.parse(savedMainCity));
-        }
+            const savedCities = localStorage.getItem("selectedCities");
+            const savedFilters = localStorage.getItem("selectedFilters");
+            const savedMainCity = localStorage.getItem("mainCity");
+
+                
+            if (savedCities) {
+                setSelectedCities(JSON.parse(savedCities));
+            } else {
+                const defaultData = await fetchWeatherByCity("Katowice");
+                setSelectedCities([defaultData]);
+                setMainCity(defaultData);
+                localStorage.setItem("selectedCities", JSON.stringify([defaultData]));
+                localStorage.setItem("mainCity", JSON.stringify(defaultData));
+            }
+            if (savedFilters) {
+                setSelectedFilters(JSON.parse(savedFilters));
+            }
+            if (savedMainCity) {
+                setMainCity(JSON.parse(savedMainCity));
+            }
+
+        };
+
+        initializeDefaultCity();
+
     }, []);
 
 

@@ -69,7 +69,7 @@ const LocationSelector = ({ selectedCities, setSelectedCities }: {
 
     return (
         <div className="location-selector">
-            <h3>Cities</h3>
+            <h3>Add Cities</h3>
             <div className="location-selector-input-container" ref={searchContainerRef}>
                 <FaSearch id="location-selector-icon" />
                 <input
@@ -86,9 +86,9 @@ const LocationSelector = ({ selectedCities, setSelectedCities }: {
                             onClick={() => handleCheckboxChange(result.name)}
                             className="location-selector-result-item"
                         >
-                            {result.name},
-                            {result.region && result.region !== 'null' ? result.region + ',' : ''}
+                            {result.name}, &nbsp;
                             {result.country}
+                            {result.region && result.region !== 'null' ? ', ' + result.region : ''}
                         </div>
                     ))}
                 </div>
@@ -102,10 +102,53 @@ const LocationSelector = ({ selectedCities, setSelectedCities }: {
                                 checked={selectedCities.some((c) => c.location.name === city.location.name)}
                                 onChange={() => handleCheckboxChange(city.location.name)}
                             />
-                            {city.location.name}, {city.location.country}, {city.location.region}
+                            {city.location.name}, &nbsp;
+                            {city.location.country}
+                            {city.location.region && city.location.region !== 'null' ? ', ' + city.location.region : ''}
                         </label>
                     </li>
                 ))}
+
+                {!selectedCities.some((c) => c.location.name === "Katowice") && (
+                    <li className="location-selector-item">
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={false}
+                                onChange={() => handleCheckboxChange("Katowice")}
+                            />
+                            Katowice, Poland
+                        </label>
+                    </li>
+                )}
+
+                {!selectedCities.some((c) => c.location.name === "Paris") && (
+                    <li className="location-selector-item">
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={false}
+                                onChange={() => handleCheckboxChange("Paris")}
+                            />
+                            Paris, France, Ile-de-France
+                        </label>
+                    </li>
+                )}
+
+
+                {!selectedCities.some((c) => c.location.name === "Madrid") && (
+                    <li className="location-selector-item">
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={false}
+                                onChange={() => handleCheckboxChange("Madrid")}
+                            />
+                            Madrid, Spain, Madrid
+                        </label>
+                    </li>
+                )}
+
             </ul>
         </div>
     );
