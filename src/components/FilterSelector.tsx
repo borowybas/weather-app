@@ -1,8 +1,8 @@
 import React from "react";
 import '../styles/FilterSelector.scss';
 
-const FilerSelector = ({selectedFilters, setSelectedFilters}: {
-    selectedFilters: {[key: string]: boolean},
+const FilerSelector = ({ selectedFilters, setSelectedFilters }: {
+    selectedFilters: { [key: string]: boolean },
     setSelectedFilters: React.Dispatch<React.SetStateAction<{ [key: string]: boolean }>>
 }) => {
 
@@ -24,7 +24,7 @@ const FilerSelector = ({selectedFilters, setSelectedFilters}: {
 
     const handleCheckboxChange = (filterKey: string) => {
         setSelectedFilters((prev) => {
-            const updatedFilters = { ...prev, [filterKey]: !prev[filterKey]};
+            const updatedFilters = { ...prev, [filterKey]: !prev[filterKey] };
             localStorage.setItem("selectedFilters", JSON.stringify(updatedFilters));
             return updatedFilters;
         });
@@ -36,11 +36,11 @@ const FilerSelector = ({selectedFilters, setSelectedFilters}: {
             {filters.map((filter) => (
                 <label key={filter.key} className="filter-item">
                     <input
-                    type="checkbox" 
-                    checked={selectedFilters[filter.key] || false}
-                    onChange={() => handleCheckboxChange(filter.key)}    
-                />
-                {filter.label}
+                        type="checkbox"
+                        checked={selectedFilters[filter.key] || false}
+                        onChange={() => handleCheckboxChange(filter.key)}
+                    />
+                    {filter.label}
                 </label>
             ))}
         </div>

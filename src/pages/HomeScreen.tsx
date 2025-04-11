@@ -8,8 +8,8 @@ import Navbar from "../components/Navbar";
 
 const HomeScreen = () => {
     const [selectedCities, setSelectedCities] = useState<any[]>([]);
-    const [mainCity, setMainCity] = useState<any | null>(null); 
-    const [selectedFilters, setSelectedFilters] = useState<{ [key: string]: boolean}>({
+    const [mainCity, setMainCity] = useState<any | null>(null);
+    const [selectedFilters, setSelectedFilters] = useState<{ [key: string]: boolean }>({
         temp_c: true,
         temp_f: true,
         condition: true,
@@ -29,7 +29,7 @@ const HomeScreen = () => {
         const savedCities = localStorage.getItem("selectedCities");
         const savedFilters = localStorage.getItem("selectedFilters");
         const savedMainCity = localStorage.getItem("mainCity");
-    
+
         if (savedCities) {
             setSelectedCities(JSON.parse(savedCities));
         }
@@ -40,12 +40,12 @@ const HomeScreen = () => {
             setMainCity(JSON.parse(savedMainCity));
         }
     }, []);
-    
+
 
     return (
         <div className="home-container">
             <Navbar />
-                       
+
             <div className="main-content">
                 <div className="main-city">
                     <MainWeatherCard
@@ -65,13 +65,13 @@ const HomeScreen = () => {
                     />
                 </div>
             </div>
-            
+
             <div className="side-panel">
                 <LocationSelector
                     selectedCities={selectedCities}
                     setSelectedCities={setSelectedCities}
                 />
-                
+
                 <FilterSelector
                     selectedFilters={selectedFilters}
                     setSelectedFilters={(filters) => {
@@ -79,7 +79,7 @@ const HomeScreen = () => {
                         localStorage.setItem("selectedFilters", JSON.stringify(filters));
                     }}
                 />
-                
+
             </div>
 
         </div>

@@ -1,25 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import { fetchWeatherByCity, searchCity } from "../api/weather";
 import '../styles/LocationSelector.scss';
 
-const LocationSelector = ({ selectedCities, setSelectedCities }: { 
-    selectedCities: any[], 
-    setSelectedCities: React.Dispatch<React.SetStateAction<any[]>> 
+const LocationSelector = ({ selectedCities, setSelectedCities }: {
+    selectedCities: any[],
+    setSelectedCities: React.Dispatch<React.SetStateAction<any[]>>
 }) => {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState<any[]>([]);
+    const searchContainerRef = useRef<HTMLDivElement>(null);
 
     const handleSearch = async () => {
         // Dont call api when serch query is empty or too short
         if (query.length < 3) {
-            setResults([]); 
+            setResults([]);
             return;
         }
         // Call api to get city data
-        const data = await searchCity(query); 
+        const data = await searchCity(query);
         // Set results to state
-        setResults(data); 
+        setResults(data);
     };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -31,7 +32,7 @@ const LocationSelector = ({ selectedCities, setSelectedCities }: {
     const handleCheckboxChange = async (cityName: string) => {
         // const city = selectedCities.find((r) => r.name === cityName); // Find city in results
         // if (!city) return;
-    
+
         if (selectedCities.find((c) => c.location.name === cityName)) {
             // Delete city from main grid
             setSelectedCities((prev) => {
@@ -41,19 +42,35 @@ const LocationSelector = ({ selectedCities, setSelectedCities }: {
             });
         } else {
             // Get weather data from api and add city to main grid
-            const weatherData = await fetchWeatherByCity(cityName); 
+            const weatherData = await fetchWeatherByCity(cityName);
             setSelectedCities((prev) => {
                 const updatedCities = [...prev, weatherData];
-                localStorage.setItem("selectedCities", JSON.stringify(updatedCities)); 
+                localStorage.setItem("selectedCities", JSON.stringify(updatedCities));
                 return updatedCities;
             });
         }
     };
 
+    useEffect(() => {
+        // Remove search results whhen clickked utside
+        const handleClickOutside = (event: MouseEvent) => {
+            if (searchContainerRef.current &&
+                !searchContainerRef.current.contains(event.target as Node)) {
+                setResults([]);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
         <div className="location-selector">
             <h3>Cities</h3>
-            <div className="location-selector-input-container">
+            <div className="location-selector-input-container" ref={searchContainerRef}>
                 <FaSearch id="location-selector-icon" />
                 <input
                     value={query}
@@ -69,7 +86,7 @@ const LocationSelector = ({ selectedCities, setSelectedCities }: {
                             onClick={() => handleCheckboxChange(result.name)}
                             className="location-selector-result-item"
                         >
-                            {result.name}, 
+                            {result.name},
                             {result.region && result.region !== 'null' ? result.region + ',' : ''}
                             {result.country}
                         </div>
