@@ -26,31 +26,35 @@ const HomeScreen = () => {
     return (
         <div className="home-container">
 
-            <LocationSelector 
-                selectedCities={selectedCities} 
-                setSelectedCities={setSelectedCities} 
-            />
+            
+            <div className="main-content">
+                <div className="main-city">
+                    <MainWeatherCard
+                        mainCity={mainCity}
+                    />
+                </div>
 
-            <div className="main-city">
-                <MainWeatherCard 
-                    mainCity={mainCity}
+                <div className="other-cities">
+                    <WeatherGrid
+                        selectedCities={selectedCities}
+                        setMainCity={setMainCity}
+                        mainCity={mainCity}
+                        selectedFilters={selectedFilters}
+                    />
+                </div>
+            </div>
+            
+            <div className="side-panel">
+                <LocationSelector
+                    selectedCities={selectedCities}
+                    setSelectedCities={setSelectedCities}
                 />
-            </div>
-
-            <div className="other-cities">
-                <WeatherGrid 
-                selectedCities={selectedCities}
-                setMainCity={setMainCity}
-                mainCity={mainCity}
-                selectedFilters={selectedFilters}
-                 />
-            </div>
-
-            <div className="filter-panel-container">
-                <FilterSelector 
+                {/* <div className="filter-panel-container"> */}
+                <FilterSelector
                     selectedFilters={selectedFilters}
                     setSelectedFilters={setSelectedFilters}
                 />
+                {/* </div> */}
             </div>
 
         </div>

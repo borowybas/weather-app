@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { fetchWeatherByCity } from "../api/weather";
 
 const MainWeatherCard = ({mainCity}: {mainCity: any}) => {
     if (!mainCity) return <p>Nie ustawiono głównego miasta...</p>;

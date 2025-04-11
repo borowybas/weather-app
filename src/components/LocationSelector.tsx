@@ -43,6 +43,7 @@ const LocationSelector = ({ selectedCities, setSelectedCities }: {
 
     return (
         <div className="location-selector">
+            <h3>Cities</h3>
             <div className="location-selector-input-container">
                 <FaSearch id="location-selector-icon" />
                 <input
