@@ -11,9 +11,9 @@ Weather App to aplikacja webowa stworzona w React z wykorzystaniem TypeScript, u
 - Zapisywanie wybranych miast i preferencji w `localStorage`
 - Responsywny i estetyczny interfejs
 
-## Zrzut ekranu
+## 
 
-![Screenshot aplikacji](./screenshot.png)
+![Screenshot aplikacji](./homescreen.png)
 
 ## Technologie
 
@@ -31,4 +31,3 @@ Weather App to aplikacja webowa stworzona w React z wykorzystaniem TypeScript, u
   ├── styles/             # Pliki stylów SCSS
   ├── App.tsx             # Główny komponent aplikacji
   └── main.tsx            # Punkt wejściowy aplikacji
-
