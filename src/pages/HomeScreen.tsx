@@ -4,6 +4,7 @@ import MainWeatherCard from "../components/MainWeatherCard";
 import WeatherGrid from "../components/WeatherGrid";
 import FilterSelector from "../components/FilterSelector";
 import '../styles/HomeScreen.scss';
+import Navbar from "../components/Navbar";
 
 const HomeScreen = () => {
     const [selectedCities, setSelectedCities] = useState<any[]>([]);
@@ -43,8 +44,8 @@ const HomeScreen = () => {
 
     return (
         <div className="home-container">
-
-            
+            <Navbar />
+                       
             <div className="main-content">
                 <div className="main-city">
                     <MainWeatherCard
