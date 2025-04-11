@@ -3,6 +3,7 @@ import LocationSelector from "../components/LocationSelector";
 import MainWeatherCard from "../components/MainWeatherCard";
 import WeatherGrid from "../components/WeatherGrid";
 import FilterSelector from "../components/FilterSelector";
+import '../styles/HomeScreen.scss';
 
 const HomeScreen = () => {
     const [selectedCities, setSelectedCities] = useState<any[]>([]);
@@ -38,33 +39,7 @@ const HomeScreen = () => {
             setMainCity(JSON.parse(savedMainCity));
         }
     }, []);
-    //Restore saved data from local storage
-    // useEffect(() => {
-    //     const savedCities = localStorage.getItem("selectedCities");
-    //     const savedMainCity = localStorage.getItem("mainCity");
-    //     const savedFilters = localStorage.getItem("selectedFilters");
-    //     if (savedCities) {
-    //         setSelectedCities(JSON.parse(savedCities));
-    //     }
-    //     if (savedMainCity) {
-    //         setMainCity(JSON.parse(savedMainCity));
-    //     }
-    //     if (savedFilters) {
-    //         setSelectedFilters(JSON.parse(savedFilters));
-    //     }
-    // });
-
-    // useEffect(() => {
-    //     localStorage.setItem("selectedCities", JSON.stringify(selectedCities));
-    // }, [selectedCities]);
-
-    // useEffect(() => {
-    //     localStorage.setItem("selectedFilters", JSON.stringify(selectedFilters));
-    // }, [selectedFilters]);
-
-    // useEffect(() => {
-    //     localStorage.setItem("mainCity", JSON.stringify(mainCity));
-    // }, [mainCity]);
+    
 
     return (
         <div className="home-container">
@@ -80,7 +55,6 @@ const HomeScreen = () => {
                 <div className="other-cities">
                     <WeatherGrid
                         selectedCities={selectedCities}
-                        // setMainCity={setMainCity}
                         setMainCity={(city) => {
                             setMainCity(city);
                             localStorage.setItem("mainCity", JSON.stringify(city));
@@ -96,16 +70,15 @@ const HomeScreen = () => {
                     selectedCities={selectedCities}
                     setSelectedCities={setSelectedCities}
                 />
-                {/* <div className="filter-panel-container"> */}
+                
                 <FilterSelector
                     selectedFilters={selectedFilters}
-                    // setSelectedFilters={setSelectedFilters}
                     setSelectedFilters={(filters) => {
                         setSelectedFilters(filters);
                         localStorage.setItem("selectedFilters", JSON.stringify(filters));
                     }}
                 />
-                {/* </div> */}
+                
             </div>
 
         </div>

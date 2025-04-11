@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { fetchWeatherByCity, searchCity } from "../api/weather";
+import '../styles/LocationSelector.scss';
 
 const LocationSelector = ({ selectedCities, setSelectedCities }: { 
     selectedCities: any[], 
@@ -10,7 +11,7 @@ const LocationSelector = ({ selectedCities, setSelectedCities }: {
     const [results, setResults] = useState<any[]>([]);
 
     const handleSearch = async () => {
-        // Dont call api whean serch query is empty or too short
+        // Dont call api when serch query is empty or too short
         if (query.length < 3) {
             setResults([]); 
             return;

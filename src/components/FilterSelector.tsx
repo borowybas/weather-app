@@ -1,4 +1,5 @@
 import React from "react";
+import '../styles/FilterSelector.scss';
 
 const FilerSelector = ({selectedFilters, setSelectedFilters}: {
     selectedFilters: {[key: string]: boolean},
