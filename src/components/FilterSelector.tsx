@@ -22,10 +22,11 @@ const FilerSelector = ({selectedFilters, setSelectedFilters}: {
     ];
 
     const handleCheckboxChange = (filterKey: string) => {
-        setSelectedFilters((prev) => ({
-            ...prev,
-            [filterKey]: !prev[filterKey],
-        }));
+        setSelectedFilters((prev) => {
+            const updatedFilters = { ...prev, [filterKey]: !prev[filterKey]};
+            localStorage.setItem("selectedFilters", JSON.stringify(updatedFilters));
+            return updatedFilters;
+        });
     };
 
     return (

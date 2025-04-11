@@ -12,6 +12,12 @@ const WeatherGrid = ({
     mainCity: any,
     selectedFilters: { [key: string]: boolean}
 }) => {
+
+    const handleSetMainCity = (city: any) => {
+        setMainCity(city);
+        localStorage.setItem("mainCity", JSON.stringify(city));
+    };
+
     return (
         <div className="weather-grid">
             {selectedCities.map((city, index) => (

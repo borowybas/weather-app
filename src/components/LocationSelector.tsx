@@ -33,11 +33,19 @@ const LocationSelector = ({ selectedCities, setSelectedCities }: {
     
         if (selectedCities.find((c) => c.location.name === cityName)) {
             // Delete city from main grid
-            setSelectedCities((prev) => prev.filter((c) => c.location.name !== cityName));
+            setSelectedCities((prev) => {
+                const updatedCities = prev.filter((c) => c.location.name !== cityName);
+                localStorage.setItem("selectedCities", JSON.stringify(updatedCities));
+                return updatedCities;
+            });
         } else {
             // Get weather data from api and add city to main grid
             const weatherData = await fetchWeatherByCity(cityName); 
-            setSelectedCities((prev) => [...prev, weatherData]);
+            setSelectedCities((prev) => {
+                const updatedCities = [...prev, weatherData];
+                localStorage.setItem("selectedCities", JSON.stringify(updatedCities)); 
+                return updatedCities;
+            });
         }
     };
 
