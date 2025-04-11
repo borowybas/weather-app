@@ -26,6 +26,7 @@ const HomeScreen = () => {
         feelslike_f: false,
     });
 
+    // Function to fetch weather data for a default city and update local storage
     useEffect(() => {
         const initializeDefaultCity = async () => {
 

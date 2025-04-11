@@ -22,6 +22,7 @@ const FilerSelector = ({ selectedFilters, setSelectedFilters }: {
         { key: "feelslike_f", label: "Feels Like (°F)" },
     ];
 
+    // Function to handle checkbox changes and update local storage
     const handleCheckboxChange = (filterKey: string) => {
         setSelectedFilters((prev) => {
             const updatedFilters = { ...prev, [filterKey]: !prev[filterKey] };

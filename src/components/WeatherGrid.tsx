@@ -13,6 +13,7 @@ const WeatherGrid = ({
     selectedFilters: { [key: string]: boolean }
 }) => {
 
+    // Handle setting the main city and updating local storage
     const handleSetMainCity = (city: any) => {
         setMainCity(city);
         localStorage.setItem("mainCity", JSON.stringify(city));

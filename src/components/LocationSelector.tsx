@@ -11,6 +11,7 @@ const LocationSelector = ({ selectedCities, setSelectedCities }: {
     const [results, setResults] = useState<any[]>([]);
     const searchContainerRef = useRef<HTMLDivElement>(null);
 
+    // Get city data from api
     const handleSearch = async () => {
         // Dont call api when serch query is empty or too short
         if (query.length < 3) {
@@ -23,6 +24,7 @@ const LocationSelector = ({ selectedCities, setSelectedCities }: {
         setResults(data);
     };
 
+    // Call api when query changes (after enter)
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             handleSearch();
@@ -30,8 +32,6 @@ const LocationSelector = ({ selectedCities, setSelectedCities }: {
     };
 
     const handleCheckboxChange = async (cityName: string) => {
-        // const city = selectedCities.find((r) => r.name === cityName); // Find city in results
-        // if (!city) return;
 
         if (selectedCities.find((c) => c.location.name === cityName)) {
             // Delete city from main grid

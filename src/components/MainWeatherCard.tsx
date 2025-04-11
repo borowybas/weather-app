@@ -1,9 +1,7 @@
-// import React, { useEffect, useState } from "react";
 import "../styles/MainWeatherCard.scss";
 
 const MainWeatherCard = ({ mainCity }: { mainCity: any }) => {
     if (!mainCity) return <p>Nie ustawiono głównego miasta...</p>;
-    // const [weatherData, setWeatherData] = useState<any>(null);
 
     return (
 
